@@ -3,14 +3,14 @@ import almath
 import time
 
 
-def main(motionProxy, postureProxy):
+def main(motionProxy, postureProxy, parametri_stepenica):
 
     motionProxy.setFallManagerEnabled(False)
 
     # Parametri
-    #visina_stepenice = parametri_stepenica[1][0][0]
-    #dubina_stepenice = parametri_stepenica[1][0][1]
-    visina_stepenice = 0.055827938778101105
+    visina_stepenice = parametri_stepenica[1][0][0]
+    dubina_stepenice = parametri_stepenica[1][0][1]
+    #visina_stepenice = 0.055827938778101105
     odmak_od_stepenice_visinski = 0.01
 
     #############################################################################################################
@@ -332,41 +332,3 @@ def torso_z(motion, speed, ispruzi_torzo):
     #motion.setPositions("Torso", 1, target, 0.5, 7)  # konacna pozicija
     #motion.positionInterpolations("Torso", 1, target, 7, 8)  #konacna pozicija ovo nevalja
     motion.changePosition("Torso", 1, positionChange, speed, 7)  #promjena pozicije
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def set_stiffness(motion, Rstiff):
-
-    motion.setStiffnesses('RHipPitch', Rstiff[0])
-    motion.setStiffnesses('RHipRoll', Rstiff[1])
-    motion.setStiffnesses('RKneePitch', Rstiff[2])
-    motion.setStiffnesses('RAnklePitch', Rstiff[3])
-    motion.setStiffnesses('RAnkleRoll', Rstiff[4])
-
-def get_stiffness(motion):
-    Rstiff = []
-    Rstiff.append(motion.getStiffnesses('RHipPitch'))
-    Rstiff.append(motion.getStiffnesses('RHipRoll'))
-    Rstiff.append(motion.getStiffnesses('RKneePitch'))
-    Rstiff.append(motion.getStiffnesses('RAnklePitch'))
-    Rstiff.append(motion.getStiffnesses('RAnkleRoll'))
-    return Rstiff
-
